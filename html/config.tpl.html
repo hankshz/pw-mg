@@ -1,0 +1,131 @@
+<!DOCTYPE>
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="button" class="btn btn-default" ng-click="hideDisplay=true;hideAutomation=true;hideGeneration=false">Generation</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="button" class="btn btn-default" ng-click="hideGeneration=true;hideAutomation=true;hideDisplay=false">Display</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="button" class="btn btn-default" ng-click="hideGeneration=true;hideDisplay=true;hideAutomation=false">Automation</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-10">
+                    <div class="horizontal-collapse" uib-collapse="hideGeneration" horizontal>
+                        <div class="well well-lg">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label>
+                                        <input type="checkbox" ng-model="config.uppperCase">
+                                        Uppper case
+                                    </label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label>
+                                        <input type="checkbox" ng-model="config.lowerCase">
+                                        Lower case
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label>
+                                        <input type="checkbox" ng-model="config.number">
+                                        Number
+                                    </label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label>
+                                        <input type="checkbox" ng-model="config.sign">
+                                        Sign
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label>
+                                        Length:
+                                        <select ng-model="config.length">
+                                            <option ng-repeat="x in [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]" value="{{x}}">{{x}}</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label>
+                                        Algorithm:
+                                        <select ng-model="config.algorithm">
+                                            <option ng-repeat="x in ['MD4', 'MD5', 'SHA-1', 'SHA-256']" value="{{x}}">{{x}}</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontal-collapse" uib-collapse="hideDisplay" horizontal>
+                        <div class="well well-lg">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label>
+                                        <input type="checkbox" ng-model="config.showPassword">
+                                        Show password
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="horizontal-collapse" uib-collapse="hideAutomation" horizontal>
+                        <div class="well well-lg">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label>
+                                        <input type="checkbox" ng-model="config.autoFill">
+                                        Autofill
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>
+                                        <input type="checkbox" ng-model="config.randomUsername">
+                                        Random username or
+                                        <input type="text" ng-disabled="config.randomUsername" ng-model="config.username">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>
+                                        Cache password:
+                                        <select ng-model="config.cache">
+                                            <option ng-repeat="x in ['never', 'session', 'forever']" value="{{x}}">{{x}}</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <button class="btn btn-primary" ng-click="save()">Save</button>
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-primary" ng-click="reset()">Reset</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

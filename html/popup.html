@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>
+            Password Manager
+        </title>
+        <script src="../asset/angular.min.js"></script>
+        <script src="../asset/angular-route.min.js"></script>
+        <script src="../asset/ngStorage.min.js"></script>
+        <script src="../asset/angular-animate.js"></script>
+        <script src="../asset/angular-sanitize.js"></script>
+        <script src="../asset/ui-bootstrap-tpls-2.1.4.js"></script>
+        <script src="../asset/passwordmaker/hashutils.js"></script>
+        <script src="../asset/passwordmaker/md4.js"></script>
+        <script src="../asset/passwordmaker/md5.js"></script>
+        <script src="../asset/passwordmaker/sha256.js"></script>
+        <script src="../asset/passwordmaker/sha1.js"></script>
+        <script src="../asset/sjcl.js"></script>
+        <script src="../asset/URI.js"></script>
+        <script src="../javascript/popup.js"></script>
+        <link rel="stylesheet" href="../asset/bootstrap.min.css">
+        <link rel="stylesheet" href="../asset/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/popup.css">
+    </head>
+    <body ng-app="myApp" ng-controller="MainCtrl">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="container-fluid">
+                        <form class="form-inline" name="masterform" novalidate>
+                            <div class="form-group has-feedback" ng-class="{'has-success': masterform.password.$dirty && masterform.password.$valid, 'has-error': masterform.password.$dirty && masterform.password.$invalid}">
+                                <div class="inner-addon">
+                                    <i class="left-addon fa fa-key"></i>
+                                    <input type="password" class="left-added form-control" name="password" ng-model="password" placeholder="Password" required validate-password="10" />
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback" ng-class="{'has-success': masterform.confirm.$dirty && masterform.confirm.$valid, 'has-error': masterform.confirm.$dirty && masterform.confirm.$invalid}">
+                                <div class="inner-addon">
+                                    <i class="left-addon fa fa-lock"></i>
+                                    <input type="password" class="left-added form-control" name="confirm" ng-model="confirm" placeholder="Confirm" required validate-equal="password" ng-disabled="masterform.password.$invalid" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="nav nav-tabs">
+                        <li><a href="#generate">Generate</a></li>
+                        <li><a href="#config">Config</a></li>
+                        <li><a href="#summary">Summary</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="container-fluid" ng-view></div>
+                </div>
+            </div>
+            <div class="row">
+                <div uib-alert ng-repeat="alert in alerts" ng-class="'alert alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>
+            </div>
+        </div>
+    </body>
+</html>

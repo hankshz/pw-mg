@@ -1,0 +1,107 @@
+<!DOCTYPE>
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="inner-addon">
+                                <i class="left-addon fa fa-internet-explorer"></i>
+                                <input type="text" class="left-added form-control" ng-disabled='true' ng-model="current.site" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="inner-addon">
+                                <i class="left-addon fa fa-user"></i>
+                                <i class="right-addon fa fa-refresh" ng-click="createRandomUsername(10);"></i>
+                                <input type="text" class="middle-added form-control" ng-model="current.username" list="emailHistory"/>
+                                <datalist id="emailHistory">
+                                    <option ng-repeat="item in usernames" value="{{ item }}"></option>
+                                </datalist>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="inner-addon">
+                                <i class="left-addon fa fa-tag"></i>
+                                <i class="right-addon fa fa-toggle-off" ng-if="current.config.showPassword" ng-click="current.config.showPassword=!current.config.showPassword"></i>
+                                <i class="right-addon fa fa-toggle-on" ng-if="!current.config.showPassword" ng-click="current.config.showPassword=!current.config.showPassword"></i>
+                                <input type="{{current.config.showPassword?'text':'password'}}" class="middle-added form-control" ng-model="password" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <button class="btn btn-primary" ng-click="save()">Save</button>
+                        </div>
+                        <div class="col-xs-3">
+                            <button class="btn btn-primary" ng-click="del()">Delete</button>
+                        </div>
+                        <div class="col-xs-3">
+                            <button class="btn btn-primary" ng-click="copy()">Copy</button>
+                        </div>
+                        <div class="col-xs-3">
+                            <button class="btn btn-primary" ng-click="fill()">Fill</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="well well-lg">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" ng-model="current.config.uppperCase">
+                                    Uppper case
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" ng-model="current.config.lowerCase">
+                                    Lower case
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" ng-model="current.config.number">
+                                    Number
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" ng-model="current.config.sign">
+                                    Sign
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label>
+                                    Length:
+                                    <select ng-model="current.config.length">
+                                        <option ng-repeat="x in [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]" value="{{x}}">{{x}}</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
+                                <label>
+                                    Algorithm:
+                                    <select ng-model="current.config.algorithm">
+                                        <option ng-repeat="x in ['MD4', 'MD5', 'SHA-1', 'SHA-256']" value="{{x}}">{{x}}</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
